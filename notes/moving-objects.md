@@ -124,7 +124,7 @@ struct hasY {
 hasY hy, hy2 = std::move(hy); // error: move constructor is deleted
 ```
 
-反过来，如果class定义了自己的move controller，则必须显式的定义copy controller，否则copy controller将默认被标记为deleted。
+反过来，**如果class定义了自己的move controller，则必须显式的定义copy controller，否则copy controller将默认被标记为deleted**。
 
 copy operations的参数一般都为const左值引用类型，因为拷贝的过程中不允许修改copied-from对象；move operations的参数一般为nonconst右值引用类型，因为move过程中需要改变move-from对象的状态。
 

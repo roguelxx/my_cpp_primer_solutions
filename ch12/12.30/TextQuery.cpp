@@ -9,9 +9,9 @@ QueryResult TextQuery::query(const string &word) const {
   static shared_ptr<set<int>> nodata(new set<int>);
   auto it = ln_map.find(word);
   if (it == ln_map.end()) {
-    return QueryResult(word, nodata, file);
+    return {word, nodata, file};
   } else{
-    return QueryResult(word, it->second, file);
+    return {word, it->second, file};
   }
 }
 

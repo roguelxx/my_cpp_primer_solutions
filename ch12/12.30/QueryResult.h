@@ -22,8 +22,8 @@ class QueryResult {
   }
  private:
   string sought;
-  shared_ptr<vector<string>> file;
   shared_ptr<set<int>> lines;
+  shared_ptr<vector<string>> file;
 };
 
 #endif//CPP_PRIME_QUERYRESULT_H
