@@ -4,7 +4,7 @@
 
 - When we mix strings and string or character literals, at least one operand to each operator must be of string type
   
-- ![image-20210627180931345](/home/lxx/Documents/books/c++/images/string-add-rule.png)
+- ![image-20210627180931345](./images/string-add-rule.png)
   
 - If we want to change the value of the characters in a string, we must define the loop variable as a reference type
 
@@ -27,15 +27,15 @@
 
 - When we use this form of initialization, it is important to remember that string literals end with a null character. That null character is copied into the array along with the characters in the literal
 
-  - ![image-20210628171400301](/home/lxx/Documents/books/c++/images/char-array-attention.png)
+  - ![image-20210628171400301](./images/char-array-attention.png)
 
 - We cannot initialize an array as a copy of another array, nor is it legal to assign one array to another
   
-- ![image-20210628171551577](/home/lxx/Documents/books/c++/images/array-attention-1.png)
+- ![image-20210628171551577](./images/array-attention-1.png)
   
 - It can be easier to understand array declarations by starting with the array’s name and reading them from the inside out.
   
-  - ![image-20210628172458201](/home/lxx/Documents/books/c++/images/array-decl-`.png)
+  - ![image-20210628172458201](./images/array-decl-`.png)
   - We start by observing that the parentheses around `*Parray` mean that `Parray` is a pointer. Looking right, we see that `Parray` points to an array of size 10. Looking left, we see that the elements in that array are `ints`. Thus, `Parray` is a pointer to an array of ten `ints`.
   
 - ```c++

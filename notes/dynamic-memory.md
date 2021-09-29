@@ -8,11 +8,11 @@
 
 `shared_ptr`和`vector`一样，属于模板类，所以在初始化的时候我们必须提供`type`。智能指针的使用与普通指针一样，下面列出了智能指针共有的常用的方法：
 
-![image-20210729192636159](/home/lxx/Documents/books/c++/images/smart-ptr-common-methods.png)
+![image-20210729192636159](./images/smart-ptr-common-methods.png)
 
 下面列出了`shared_ptr`特有的方法：
 
-![image-20210729192807674](/home/lxx/Documents/books/c++/images/share-ptr-methods.png)
+![image-20210729192807674](./images/share-ptr-methods.png)
 
 `make_shared<T>(args)`在动态内存上分配一块内存给object，用`args`初始化object后，返回指向object的共享指针。
 
@@ -44,7 +44,7 @@ auto p6 = make_shared<vector<string>>();
 
 ### shared_ptr & new
 
-![image-20210730160724173](/home/lxx/Documents/books/c++/images/shared_ptr_construct.png)
+![image-20210730160724173](./images/shared_ptr_construct.png)
 
 需要传入指针作为参数的构造器都是`explicit`的，所以只能通过直接初始化（direct initialization）：
 
@@ -146,7 +146,7 @@ if(shared_ptr<int> np = wp.lock()) {} // true if np is not null
 
 unique_ptr拥有它指向的内存对象，这个内存对象不与其他指针共享，下面是常用的函数：
 
-![image-20210730170720981](/home/lxx/Documents/books/c++/images/unique-ptr-methods.png)
+![image-20210730170720981](./images/unique-ptr-methods.png)
 
 unique ptr没有像`make_shared`的创建智能指针的方法，我们可以直接申明或者将其与内置指针绑定：
 
@@ -238,7 +238,7 @@ for(size_t i = 0;i<10;++i){
 
 常用的与动态数组有关的方法：
 
-![image-20210808115150194](/home/lxx/Documents/books/c++/images/dynamic-arrays.png)
+![image-20210808115150194](./images/dynamic-arrays.png)
 
 如果希望通过shared_ptr管理一组动态内存空间，我们在创建共享指针时需要自己提供deleter；同时，我们无法通过下标直接访问共享指针，共享指针也不支持指针运算(*p++)，所以要注意写法：
 
