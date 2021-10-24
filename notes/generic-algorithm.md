@@ -96,8 +96,6 @@ for_each(vec.begin(), vec.end(), bind(print, os, _1, ' ')); // error
 for_each(vec.begin(), vec.end(), bind(print, ref(os), _1, ' '));
 ```
 
-
-
 # Exercises
 
 10.5，10.7， 10.8
