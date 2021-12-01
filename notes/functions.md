@@ -137,4 +137,3 @@
     - When a function has default arguments, a call may appear to have fewer arguments than it actually does.
 
 - form of pointers to function, `return type (*pointer_name)(parameters)`
-- 
