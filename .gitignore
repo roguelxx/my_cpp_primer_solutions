@@ -47,3 +47,8 @@ atlassian-ide-plugin.xml
 *.exe
 *.out
 *.app
+
+# user-defined file
+main.cpp
+CMakeLists.txt
+*.swp
