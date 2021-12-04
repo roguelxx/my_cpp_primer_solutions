@@ -2,7 +2,7 @@
 
 实现两个类，Message和Folder；Message可以出现在多个Folder中；Folder中可以存放多个不同的Message。Folder和Message的关系图如下：
 
-<img src="/home/lxx/Documents/books/c++/images/msg-fder-rel.png" alt="image-20210824144418949" style="zoom:50%;" />
+<img src="images/msg-fder-rel.png" alt="image-20210824144418949" style="zoom:50%;" />
 
 ### Message
 
