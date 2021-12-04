@@ -169,13 +169,61 @@ const int i = -1, &r = 0; // ok
 
   - 可以通过在constructor前添加`explicit`关键字，防止compiler进行隐式转换，关键字只能用于修饰，在class内部，仅带有一个实参的constructor
 
-- `static` member functions are not bound to any object, so they do not have a `this` pointer. As a result, static member functions may not be declared as
-  `const`, and we may not refer to this in the body of a static member.
+## static class members
 
-  - 如果在class外部define `static` member function，不能再使用static修饰。`static`只用于声明函数。
-  - 因为`static` members不属于object，我们创建object时不会define `static` member；所以，我们必须在class外部define and initialize `static` member
+静态成员与class联系，与object无关，object内不存储static成员，所有object共享static成员。这就使得static成员函数不能通过`this`来获取当前的object对象，所以static成员函数不可以用`const`标识，也不能在函数体内部使用`this`。
 
-- a `static` data member can have the same type as the class type of which it is a member.
+```c++
+class Account {
+public:
+	void calculate() { amount += amount * interestRate; }
+	static double rate() { return interestRate; }
+	static void rate(double);
+private:
+	std::string owner;
+	double amount;
+	static double interestRate;
+	static double initRate();
+};
+```
+
+可以类加范围操作符`Class::static_func()`、对象、指针、引用来访问static成员，非静态成员函数内部可以直接访问static成员函数（line 3）。
+
+通常而言，我们在class内部声明static成员，在外部定义、初始话static成员（`const integral type`以及`constexpr literal type`除外）。
+
+> `constexpr`标识的变量本身是隐式的`const`，且必须被常量表达式初始化；`constexpr`变量的值无法改变且必须在编译期就确定它的值
+
+function内部的static变量需要在使用前被初始化，且变量的生命周期不会随函数的结束而结束，而是维持到程序结束。
+
+> Even if a const static data member is initialized in the class body, that member ordinarily should be defined outside the class definition.
+
+```c++
+#include <iostream>
+using namespace std;
+
+class X {
+    public:
+    const static int a = 1; // declaration
+};
+
+// const int X::a; // definition
+
+void test(const int& a) {
+    cout << a << endl;
+}
+
+int main() {
+    X x;
+    test(x::a); // error: undefined reference to 'X::a'
+    return 0;
+}
+
+// https://stackoverflow.com/questions/23439848/whether-redeclare-a-const-static-variable-outside-a-class-or-not
+```
+
+static成员与non-static成员还有两点用法上的区别：
+
+- static成员可以是不完全的类型
 
   - ```c++
     class Bar {
@@ -184,4 +232,17 @@ const int i = -1, &r = 0; // ok
         	Bar *mem2; // ok: pointer member can have incomplete type
         	Bar mem3; // error: data member can not have incomplete type
     }
+    ```
+
+- static成员可以作为函数的默认参数
+
+  - ```c++
+    class Screen {
+    public:
+    	// bkground refers to the static member
+    	// declared later in the class definition
+    	Screen& clear(char = bkground);
+    private:
+    	static const char bkground;
+    };
     ```

@@ -58,9 +58,7 @@
 
 - ![image-20210625124814832](/home/lxx/Documents/books/c++/images/top&low-level-const.png)
 
-- Variables declared as `constexpr` are implicitly `const` and must be initialized by constant expressions
-
-  - A constant expression is an expression whose value cannot change and that can be evaluated at compile time
+- `constexpr`标识的变量本身是隐式的`const`，且必须被常量表达式初始化；`constexpr`变量的值无法改变且必须在编译期就确定它的值
 
 - `decltype` returns the type of its operand
 
